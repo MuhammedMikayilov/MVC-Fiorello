@@ -1,0 +1,78 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- PRODUCTS START -->
+
+<section id="products">
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-12 d-flex justify-content-between">
+                <ul class="category-mobile d-md-none list-unstyled">
+                    <li>
+                        <a href="" class="categories mr-2">Categories</a>
+                        <i class="fas fa-caret-down"></i>
+                        <ul class="category list-unstyled" style="display: none;">
+                            <li><a href="" data-id="all">All</a></li>
+
+                            @foreach (Categories categories in Model.Categories)
+                            {
+                                <li><a href="" data-id="@categories.Name.ToLower()">@categories.Name</a></li>
+                            }
+
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="category d-none d-md-flex list-unstyled">
+                    <li><a href="" data-id="all">All</a></li>
+                    @foreach (Categories categories in Model.Categories)
+                    {
+                        <li><a href="" data-id="@categories.Name.ToLower()">@categories.Name</a></li>
+                    }
+                </ul>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="" class="mr-2">Filter</a>
+                        <i class="fas fa-caret-down"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" id="proList">
+            @foreach (Products products in Model.Products)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="product-item text-center" data-id="@products.Categories.Name.ToLower()">
+                        <div class="img">
+                            <a href="">
+                                <img src="~/img/@products.Image" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="title mt-3">
+                            <h6>@products.Name</h6>
+                        </div>
+                        <div class="price">
+                            <span class="text-black-50">
+                                <a id="addToCard" asp-controller="Home" asp-action="AddBasket" asp-route-id="@products.Id">Add to card</a>
+                            </span>
+                            <span class="text-black-50">$@products.Price</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="row my-5 justify-content-center">
+            <input type="hidden" id="count" value="@ViewBag.ProductCount" />
+            <div id="loader" class="d-none">
+                <button class="btn btn-info btn-lg" id="loadingBtn" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                </button>
+            </div>
+            <button class="btn btn-success btn-lg" id="loadMore">Load More...</button>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS END -->

@@ -1,0 +1,36 @@
+﻿@model List<BasketVM>
+@{
+    ViewData["Title"] = "Basket";
+    int count = 1;
+}
+
+<div class="container">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BasketVM basket in Model)
+            {
+                <tr>
+                    <th scope="row">@count</th>
+                    <td><img src="~/img/@basket.Image" width="40" height="40" /></td>
+                    <td>@basket.Title</td>
+                    <td>@basket.Price</td>
+                    <td>@basket.Count</td>
+                    <td> <a asp-controller="Home" asp-action="DeleteBasket" asp-route-id="@basket.Id" data-id="@basket.Id" class="btnDel btn btn-warning">Delete</a></td>
+                  
+                </tr>
+                count++;
+            }
+
+        </tbody>
+    </table>
+</div>
+
