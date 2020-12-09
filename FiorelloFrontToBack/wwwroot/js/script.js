@@ -64,16 +64,6 @@ $(document).ready(function () {
         })
     })
 
-    //$(document).on('click', '.btndel', function (e) {
-    //    $.ajax({
-            //url: "/home/deletebasket?id=" + $delete,
-            //type: "get",
-            //success: function (res) {
-            //    $("")
-            //}
-    //    })
-    //})
-
     $(document).on('click', '#search', function () {
         $(this).next().toggle();
     })

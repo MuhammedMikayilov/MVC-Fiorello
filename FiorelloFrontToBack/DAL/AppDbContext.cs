@@ -23,6 +23,7 @@ namespace FiorelloFrontToBack.DAL
         public DbSet<Headers> Headers { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<SliderSay> SliderSays { get; set; }
+        public DbSet<Bio> Bios { get; set; }
 
     }
 }
